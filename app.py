@@ -18,8 +18,9 @@ def index():
     return render_template("index.html")     # Prediction form page
 
 @app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
-    # Collect form input
+    # --- parse inputs
     N = float(request.form['N'])
     P = float(request.form['P'])
     K = float(request.form['K'])
@@ -28,21 +29,36 @@ def predict():
     ph = float(request.form['ph'])
     rainfall = float(request.form['rainfall'])
 
-    # Prepare input for model
+    # --- server-side validation (do not change prediction logic)
+    limits = {
+        "N": (0, 140),
+        "P": (5, 145),
+        "K": (5, 205),
+        "temperature": (-5, 55),
+        "humidity": (0, 100),
+        "ph": (3.0, 10.0),
+        "rainfall": (0, 350)
+    }
+
+    inputs = {"N": N, "P": P, "K": K, "temperature": temperature,
+              "humidity": humidity, "ph": ph, "rainfall": rainfall}
+    errors = []
+    for key, val in inputs.items():
+        lo, hi = limits[key]
+        if not (lo <= val <= hi):
+            errors.append(f"{key}: {val} (allowed {lo} to {hi})")
+    if errors:
+        return render_template("index.html", error="Invalid input(s): " + "; ".join(errors))
+
+    # --- prediction (unchanged)
     features = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
     prediction = model.predict(features)[0]
-
     crop = label_encoder.inverse_transform([prediction])[0]
-
-    # Image file name (auto detects from crop name)
     image_file = crop.lower() + ".jpg"
 
-    return render_template(
-        "result.html",
-        crop=crop,
-        image_file=image_file
-    )
+    return render_template("result.html", crop=crop, image_file=image_file)
+
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

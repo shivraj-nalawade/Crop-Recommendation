@@ -194,3 +194,12 @@ h1, h2 {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
     animation: fadeIn 0.9s ease-in-out;
 }
+
+.error-box {
+  background: rgba(255, 80, 80, 0.12);
+  color: #990000;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(200,0,0,0.12);
+}
