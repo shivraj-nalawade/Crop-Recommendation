@@ -44,7 +44,7 @@ This project aims to support **precision agriculture**, enabling farmers to make
 - Joblib  
 
 ### **🔹 Model**
-- Random Forest Classifier (or your chosen best model)  
+- Random Forest Classifier   
 - Label Encoding for crop names  
 - Trained using 7 features from the dataset  
 
