@@ -5,14 +5,6 @@ This project aims to support **precision agriculture**, enabling farmers to make
 
 ---
 
-## 👥 Group Members
-
-| Name                 | PRN          |
-|----------------------|--------------|
-| **Shivraj Nalawade** | 202301060008 |
-
----
-
 ## 🚀 Features
 
 - ✔️ Predicts the best crop using 7 key environmental & soil features  
