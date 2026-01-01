@@ -10,9 +10,6 @@ This project aims to support **precision agriculture**, enabling farmers to make
 | Name                 | PRN          |
 |----------------------|--------------|
 | **Shivraj Nalawade** | 202301060008 |
-| **Pritesh Purkar**   | 202301060010 |
-| **Prajakta More**    | 202301060012 |
-| **Harshal Devkate**  | 202401060016 |
 
 ---
 
